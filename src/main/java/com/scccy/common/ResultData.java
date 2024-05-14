@@ -1,4 +1,4 @@
-package com.scccy.spring.common;
+package com.scccy.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

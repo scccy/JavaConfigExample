@@ -1,4 +1,4 @@
-package com.scccy.spring.config;
+package com.scccy.config;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
      */
     @Override
     protected Class<?>[] getRootConfigClasses() {
+
         return new Class[]{SpringConfig.class};
     }
 
@@ -23,7 +24,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{SpringConfig.class};
-//        return null;
+
     }
 
     /**

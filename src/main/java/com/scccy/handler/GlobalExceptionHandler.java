@@ -1,4 +1,4 @@
-package com.scccy.spring.handler;
+package com.scccy.handler;
 
 import com.scccy.common.ResultData;
 import org.springframework.http.HttpStatus;
