@@ -22,7 +22,7 @@ public class MyBatisConfig {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setTypeAliasesPackage("com.scccy.domain");
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mappers/*.xml"));
+        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapper/*.xml"));
         sessionFactory.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
         sessionFactory.getObject().getConfiguration().setLogImpl(org.apache.ibatis.logging.slf4j.Slf4jImpl.class);
         sessionFactory.getObject().getConfiguration().setLazyLoadingEnabled(true);

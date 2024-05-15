@@ -1,6 +1,7 @@
 package com.scccy.handler;
 
 import com.scccy.common.ResultData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -12,16 +13,16 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 处理自定义异常
+
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<ResultData> handleCustomException(CustomException ex, WebRequest request) {
         return new ResponseEntity<>(ResultData.fail().setMsg(ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-    // 处理方法参数无效异常
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResultData> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -33,13 +34,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ResultData.fail().setMsg("Validation failed").setData(errors), HttpStatus.BAD_REQUEST);
     }
 
-    // 处理所有其他异常
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResultData> handleGlobalException(Exception ex, WebRequest request) {
-        return new ResponseEntity<>(ResultData.fail().setMsg("An unexpected error occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
+        // Consider hiding internal details from the end users
+        return new ResponseEntity<>(ResultData.fail().setMsg("An unexpected error occurred, please contact support.")
+                .setData(ex.getMessage())
+                , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // 自定义异常类
     public static class CustomException extends RuntimeException {
         public CustomException(String message) {
             super(message);

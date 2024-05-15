@@ -1,5 +1,7 @@
 package com.scccy.aspect;
 
+import com.scccy.common.ResultData;
+import com.scccy.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,23 +15,18 @@ import java.util.Arrays;
 @Component
 public class SqlReturnAspect {
     @Around("execution(* com.scccy.service.impl..*(..))")
-    public Boolean checkInsertResult(ProceedingJoinPoint joinPoint) throws Throwable {
-        // 通过ProceedingJoinPoint对象获取外界调用目标方法时传入的实参数组
+    public Object checkInsertResult(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();
-        // 声明变量用来存储目标方法的返回值
-        Object targetMethodReturnValue = null;
         try {
-            // 过ProceedingJoinPoint对象调用目标方法
-            // 目标方法的返回值一定要返回给外界调用者
-            targetMethodReturnValue = joinPoint.proceed(args);
-            if(targetMethodReturnValue instanceof Integer integer) {
-                if(integer > 0) return true;
-            }else {
-                return false;
+            Object result = joinPoint.proceed(args);
+            if (result instanceof Integer) {
+                Integer integer = (Integer) result;
+                return integer > 0 ? ResultData.ok() : ResultData.fail();
             }
-        } catch (Throwable e) {
-            System.out.println(e.getMessage());
+            return result; // 这里可以根据需要返回原始结果或其他封装的结果
+        } catch (Exception e) {
+            throw  e;
         }
-        return false;
     }
 }
+

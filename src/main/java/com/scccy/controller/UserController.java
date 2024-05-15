@@ -24,13 +24,8 @@ public class UserController {
     @PostMapping
     @ResponseBody
     public ResultData add(@RequestBody User user) {
-         Object add = userService.add(user);
-
-        if((Boolean)add){
-            return ResultData.ok();
-        }else {
-            throw new GlobalExceptionHandler.CustomException("👋了您つぼみ");
-        }
+         userService.add(user);
+         return ResultData.ok();
     }
 
     //    删

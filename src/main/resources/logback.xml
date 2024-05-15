@@ -19,5 +19,5 @@
     </root>
 
     <!-- 根据特殊需求指定局部日志级别，可也是包名或全类名。 -->
-    <logger name="com.scccy.mapper" level="DEBUG"/>
+<!--    <logger name="com.scccy.mapper" level="DEBUG"/>-->
 </configuration>

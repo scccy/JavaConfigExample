@@ -22,7 +22,7 @@ public class DataSourceConfig {
     @Value("${jdbc.password}")
     private String password;
 
-    @Value("${jdbc.driverClassName}")
+    @Value("${jdbc.driver}")
     private String driverClassName;
 
     @Bean
