@@ -1,2 +1,2 @@
-!/src/main/resources/jdbc.properties.example
 !/target/
+!/src/main/resources/jdbc.properties
