@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 @Configuration
 @PropertySource("classpath:jdbc.properties.example")
-public class DataSourceConfig {
+public class MysqlDataSourceConfig {
 
     @Value("${jdbc.url}")
     private String url;
