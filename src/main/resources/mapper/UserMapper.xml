@@ -77,4 +77,8 @@
       done = #{done,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="getall" resultType="com.scccy.domain.User">
+    SELECT * FROM user
+  </select>
 </mapper>

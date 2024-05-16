@@ -1,14 +1,10 @@
 package com.scccy.aspect;
 
 import com.scccy.common.ResultData;
-import com.scccy.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 
 @Aspect

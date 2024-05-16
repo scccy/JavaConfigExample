@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Configuration
-@PropertySource("classpath:jdbc.properties")
+@PropertySource("classpath:jdbc.properties.example")
 public class DataSourceConfig {
 
     @Value("${jdbc.url}")
